@@ -2,269 +2,216 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Contact Aerial Insights — Schedule a strategic consultation for AI Decision Intelligence. Reach founder Keith Thando Bhebhe.">
-    <title>Contact | Aerial Insights — Get in Touch</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>△</text></svg>">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Get In Touch | Aerial Insights</title>
+  <meta name="description"
+    content="Connect with Aerial Insights to schedule a strategic consultation. Discover how the ADI Framework can transform your decision-making." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-    <!-- Page Loader -->
-    <div class="page-loader" id="page-loader">
-        <div class="loader-logo">Aerial Insights</div>
-        <div class="loader-bar"></div>
+  <!-- Page Loader -->
+  <div class="page-loader" id="page-loader">
+    <div class="loader-ring"></div>
+    <span class="loader-text">Aerial Insights</span>
+  </div>
+
+  <!-- Page Transition Overlay -->
+  <div class="page-transition"></div>
+
+  <!-- Particle Background -->
+  <canvas id="particle-canvas"></canvas>
+  <div class="grid-bg"></div>
+
+  <!-- ═══════════ NAVBAR ═══════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo" data-transition>
+        <span class="logo-icon">AI</span>
+        Aerial Insights
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-transition>Home</a></li>
+        <li><a href="services.html" data-transition>Services</a></li>
+        <li><a href="contact.html" data-transition>Contact</a></li>
+      </ul>
+      <div class="nav-hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
     </div>
+  </nav>
 
-    <!-- Background Grid -->
-    <div class="bg-grid"></div>
-
-    <!-- Particle Canvas -->
-    <canvas id="particles-canvas"></canvas>
-
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <div class="logo-icon">△</div>
-                <span>Aerial Insights</span>
-            </a>
-            <div class="nav-links" id="nav-links">
-                <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
-                <a href="contact.html" class="active">Contact</a>
-                <a href="contact.html" class="nav-cta">Get Started</a>
-            </div>
-            <div class="nav-hamburger" id="nav-hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero" id="contact-hero" style="min-height: 50vh;">
+    <div class="container">
+      <div class="hero-content" style="max-width: 650px;">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Let's Connect
         </div>
-    </nav>
+        <h1 style="animation: fadeInUp 0.8s var(--ease) 0.3s both;">
+          Get In <span class="gradient-text">Touch</span>
+        </h1>
+        <p class="hero-sub" style="animation: fadeInUp 0.8s var(--ease) 0.5s both;">
+          Ready to amplify your decision-making with the ADI Framework? Reach out and let's build your strategic
+          future together.
+        </p>
+      </div>
+      <div class="hero-orb"></div>
+    </div>
+  </section>
 
-    <!-- ═══════════ PAGE HERO ═══════════ -->
-    <section class="page-hero" id="contact-hero">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="dot"></span>
-                Get in Touch
+  <!-- ═══════════ CONTACT SECTION ═══════════ -->
+  <section class="section-pad" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper glass-card reveal-left">
+          <h3>Send Us a Message</h3>
+
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="form-name">Full Name</label>
+              <input type="text" id="form-name" placeholder="Enter your full name" autocomplete="name" />
+              <p class="error-msg">Please enter a valid name (min 2 characters).</p>
             </div>
-            <h1>Let's Start a Conversation</h1>
-            <p>Schedule a strategic consultation and discover how the ADI Framework can transform your organization's
-                decision-making.</p>
+
+            <div class="form-group">
+              <label for="form-email">Email Address</label>
+              <input type="email" id="form-email" placeholder="you@company.com" autocomplete="email" />
+              <p class="error-msg">Please enter a valid email address.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="form-message">Your Message</label>
+              <textarea id="form-message"
+                placeholder="Tell us about your strategic challenge..."></textarea>
+              <p class="error-msg">Message must be at least 10 characters.</p>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+              Send Message
+              <span>→</span>
+            </button>
+          </form>
+
+          <!-- Success Message -->
+          <div class="success-message" id="success-message">
+            <div class="success-icon">✓</div>
+            <h3>Message Sent!</h3>
+            <p>Thank you for reaching out. Our team will get back to you within 24 hours.</p>
+          </div>
         </div>
-    </section>
 
-    <!-- ═══════════ CONTACT SECTION ═══════════ -->
-    <section class="section" id="contact-section">
-        <div class="container">
-            <div class="contact-grid">
-                <!-- Contact Form -->
-                <div class="contact-form-card glass-card reveal-left">
-                    <h3 style="font-family:var(--font-heading);font-size:1.5rem;font-weight:700;margin-bottom:8px;">Send
-                        Us a Message</h3>
-                    <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:32px;">Fill out the form below and
-                        we'll get back to you within 24 hours.</p>
+        <!-- Contact Info -->
+        <div class="contact-info-card glass-card reveal-right">
+          <h3>Contact Details</h3>
 
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-                            <div class="form-error" id="name-error"></div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-                            <div class="form-error" id="email-error"></div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <select id="subject" name="subject">
-                                <option value="" disabled selected>Select a topic</option>
-                                <option value="consultation">Strategic Consultation</option>
-                                <option value="foundation">Foundation Workshop Inquiry</option>
-                                <option value="professional">Professional Engagement</option>
-                                <option value="enterprise">Enterprise Partnership</option>
-                                <option value="academic">Academic Workshop</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message"
-                                placeholder="Tell us about your decision intelligence needs..." required></textarea>
-                            <div class="form-error" id="message-error"></div>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
-                            Send Message →
-                        </button>
-                    </form>
-
-                    <!-- Success Message -->
-                    <div class="form-success" id="form-success">
-                        <div class="success-icon">✓</div>
-                        <h3>Message Sent Successfully!</h3>
-                        <p>Thank you for reaching out. Our team will respond within 24 hours.</p>
-                        <a href="index.html" class="btn btn-secondary" style="margin-top:24px;">Back to Home</a>
-                    </div>
-                </div>
-
-                <!-- Contact Info -->
-                <div class="contact-info-card glass-card reveal-right">
-                    <h3 style="font-family:var(--font-heading);font-size:1.5rem;font-weight:700;margin-bottom:32px;">
-                        Contact Information</h3>
-
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">👤</div>
-                        <div class="contact-info-text">
-                            <h4>Founder</h4>
-                            <p>Keith Thando Bhebhe</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">✉</div>
-                        <div class="contact-info-text">
-                            <h4>Email</h4>
-                            <p><a href="mailto:keiththandobhebhe@gmail.com">keiththandobhebhe@gmail.com</a></p>
-                        </div>
-                    </div>
-
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">📞</div>
-                        <div class="contact-info-text">
-                            <h4>Contact Person (PA)</h4>
-                            <p><a href="tel:+263789661344">+263 789 661 344</a></p>
-                        </div>
-                    </div>
-
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">📅</div>
-                        <div class="contact-info-text">
-                            <h4>Working Days</h4>
-                            <p>Monday to Saturday</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">⏰</div>
-                        <div class="contact-info-text">
-                            <h4>Working Hours</h4>
-                            <p>10:00 AM – 5:00 PM</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">🌐</div>
-                        <div class="contact-info-text">
-                            <h4>Website</h4>
-                            <p><a href="https://www.aerialinsights.com" target="_blank">www.aerialinsights.com</a></p>
-                        </div>
-                    </div>
-
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">in</div>
-                        <div class="contact-info-text">
-                            <h4>LinkedIn</h4>
-                            <p><a href="https://www.linkedin.com/in/keith-bhebhe-b40650311" target="_blank">Keith Bhebhe
-                                    on LinkedIn</a></p>
-                        </div>
-                    </div>
-
-                    <!-- Quick CTA -->
-                    <div
-                        style="margin-top:32px;padding:24px;background:linear-gradient(135deg,rgba(212,168,83,0.08),rgba(0,180,255,0.04));border-radius:var(--radius-sm);border:1px solid rgba(212,168,83,0.12);text-align:center;">
-                        <p
-                            style="font-family:var(--font-heading);font-weight:600;font-size:1rem;margin-bottom:8px;color:var(--gold);">
-                            Ready for a Strategic Consultation?</p>
-                        <p style="color:var(--text-muted);font-size:0.85rem;">Book a free 30-minute discovery call.</p>
-                        <a href="mailto:keiththandobhebhe@gmail.com?subject=Strategic Consultation Request"
-                            class="btn btn-primary" style="margin-top:16px;width:100%;justify-content:center;">Book
-                            Discovery Call →</a>
-                    </div>
-                </div>
+          <div class="info-item">
+            <div class="info-icon">👤</div>
+            <div class="info-content">
+              <p class="info-label">Founder</p>
+              <p class="info-value">Keith Thando Bhebhe</p>
             </div>
+          </div>
 
-            <!-- Map Placeholder -->
-            <div class="map-placeholder reveal" style="margin-top:64px;">
-                <div style="text-align:center;position:relative;z-index:1;">
-                    <div style="font-size:2.5rem;margin-bottom:12px;">🌍</div>
-                    <div style="font-family:var(--font-heading);font-weight:600;font-size:1.1rem;margin-bottom:6px;">
-                        Global Reach, Personal Touch</div>
-                    <div style="color:var(--text-muted);font-size:0.9rem;">Aerial Insights operates globally with
-                        virtual and on-site consultations.</div>
-                </div>
+          <div class="info-item">
+            <div class="info-icon">📧</div>
+            <div class="info-content">
+              <p class="info-label">Email</p>
+              <p class="info-value"><a
+                  href="mailto:keiththandobhebhe@gmail.com">keiththandobhebhe@gmail.com</a></p>
             </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📅</div>
+            <div class="info-content">
+              <p class="info-label">Working Days</p>
+              <p class="info-value">Monday to Saturday</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">⏰</div>
+            <div class="info-content">
+              <p class="info-label">Hours</p>
+              <p class="info-value">10 AM – 5 PM</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div class="info-content">
+              <p class="info-label">Contact Person</p>
+              <p class="info-value">PA</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📱</div>
+            <div class="info-content">
+              <p class="info-label">Phone</p>
+              <p class="info-value"><a href="tel:9813024053">9813024053</a></p>
+            </div>
+          </div>
+
+          <!-- Map Placeholder -->
+          <div class="map-placeholder">
+            <div class="map-icon">🗺️</div>
+            <p>Interactive Map Coming Soon</p>
+          </div>
         </div>
-    </section>
 
-    <!-- ═══════════ CTA SECTION ═══════════ -->
-    <section class="cta-section section" id="cta">
-        <div class="container reveal">
-            <h2 class="section-title">Join Us in Closing the <span class="gold">Judgment Gap</span></h2>
-            <p>"Aerial Insights builds the human capacity to think clearly in a world where AI is thinking for
-                everyone."</p>
-            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px;">
-                <a href="services.html" class="btn btn-primary">Explore Framework →</a>
-                <a href="https://www.linkedin.com/in/keith-bhebhe-b40650311" target="_blank"
-                    class="btn btn-secondary">Connect on LinkedIn</a>
-            </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" data-transition>
+            <span class="logo-icon">AI</span>
+            Aerial Insights
+          </a>
+          <p>Bridging the gap between automated data and human wisdom. Building the human capacity to think clearly in a
+            world where AI is thinking for everyone.</p>
         </div>
-    </section>
-
-    <!-- ═══════════ FOOTER ═══════════ -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="index.html" class="nav-logo">
-                        <div class="logo-icon">△</div>
-                        <span>Aerial Insights</span>
-                    </a>
-                    <p>Bridging the gap between automated data and human wisdom. Building the human capacity to think
-                        clearly in a world where AI is thinking for everyone.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Navigation</h4>
-                    <a href="index.html">Home</a>
-                    <a href="services.html">Services</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Framework</h4>
-                    <a href="services.html#adi-overview">Signal</a>
-                    <a href="services.html#adi-overview">Pattern</a>
-                    <a href="services.html#adi-overview">Insight</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <a href="mailto:keiththandobhebhe@gmail.com">Email Us</a>
-                    <a href="tel:+263789661344">+263 789661344</a>
-                    <a href="#">Mon – Sat, 10AM – 5PM</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Aerial Insights. All rights reserved.</p>
-                <div class="footer-socials">
-                    <a href="https://www.linkedin.com/in/keith-bhebhe-b40650311" target="_blank"
-                        aria-label="LinkedIn">in</a>
-                    <a href="mailto:keiththandobhebhe@gmail.com" aria-label="Email">✉</a>
-                    <a href="#" aria-label="Twitter">𝕏</a>
-                </div>
-            </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" data-transition>Home</a></li>
+            <li><a href="services.html" data-transition>Services</a></li>
+            <li><a href="contact.html" data-transition>Contact</a></li>
+          </ul>
         </div>
-    </footer>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:keiththandobhebhe@gmail.com">keiththandobhebhe@gmail.com</a></li>
+            <li>📞 9813024053</li>
+            <li>Mon – Sat · 10 AM – 5 PM</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Aerial Insights. All rights reserved.</span>
+        <span>Signal · Pattern · Insight · Decision</span>
+      </div>
+    </div>
+  </footer>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Chatbase Chatbot -->
+  <script>
+  (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="owo9qbTR2sFKIhl7Ma_fW";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+  </script>
 </body>
 
 </html>
