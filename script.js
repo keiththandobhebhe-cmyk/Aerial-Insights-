@@ -1,395 +1,373 @@
-/* ============================================
-   AERIAL INSIGHTS — Premium JavaScript
-   Particles · Typing · Scroll Reveals · Forms
-   ============================================ */
+/* ===================================================
+   Aerial Insights — JavaScript
+   ADI Framework: Signal → Pattern → Insight → Decision
+   Gold & Black Theme
+   =================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── Page Loader ──
+  // ──────────── Page Loader ────────────
   const loader = document.querySelector('.page-loader');
-  if (loader) {
-    window.addEventListener('load', () => {
-      setTimeout(() => loader.classList.add('hidden'), 800);
-    });
-    // Fallback in case load already fired
-    setTimeout(() => loader.classList.add('hidden'), 2500);
-  }
-
-  // ── Particle System ──
-  initParticles();
-
-  // ── Navbar Scroll ──
-  initNavbar();
-
-  // ── Mobile Menu ──
-  initMobileMenu();
-
-  // ── Typing Animation ──
-  initTypingAnimation();
-
-  // ── Scroll Reveal (Intersection Observer) ──
-  initScrollReveal();
-
-  // ── Counter Animation ──
-  initCounters();
-
-  // ── Button Ripple Effect ──
-  initRipple();
-
-  // ── Contact Form ──
-  initContactForm();
-
-  // ── Smooth Scroll for anchor links ──
-  initSmoothScroll();
-});
-
-/* ─────────── PARTICLE SYSTEM ─────────── */
-function initParticles() {
-  const canvas = document.getElementById('particles-canvas');
-  if (!canvas) return;
-
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  let animationId;
-  let mouse = { x: undefined, y: undefined };
-
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-
-  window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      loader.classList.add('hidden');
+    }, 700);
   });
 
-  class Particle {
-    constructor() {
-      this.reset();
+  // ──────────── Particle System (Gold Theme) ────────────
+  const canvas = document.getElementById('particle-canvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let mouse = { x: null, y: null };
+    const PARTICLE_COUNT = 70;
+    const CONNECTION_DIST = 140;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
-    reset() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 2 + 0.5;
-      this.speedX = (Math.random() - 0.5) * 0.5;
-      this.speedY = (Math.random() - 0.5) * 0.5;
-      this.opacity = Math.random() * 0.5 + 0.1;
-      this.color = Math.random() > 0.5 ? '212, 168, 83' : '0, 180, 255';
-    }
-
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-
-      // Mouse interaction
-      if (mouse.x !== undefined) {
-        const dx = mouse.x - this.x;
-        const dy = mouse.y - this.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          this.x -= dx * 0.01;
-          this.y -= dy * 0.01;
-        }
-      }
-
-      // Wrap around
-      if (this.x < -10) this.x = canvas.width + 10;
-      if (this.x > canvas.width + 10) this.x = -10;
-      if (this.y < -10) this.y = canvas.height + 10;
-      if (this.y > canvas.height + 10) this.y = -10;
-    }
-
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
-      ctx.fill();
-    }
-  }
-
-  // Create particles based on screen size
-  const count = Math.min(Math.floor((canvas.width * canvas.height) / 12000), 120);
-  for (let i = 0; i < count; i++) {
-    particles.push(new Particle());
-  }
-
-  function connectParticles() {
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < 150) {
-          const opacity = (1 - dist / 150) * 0.12;
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(212, 168, 83, ${opacity})`;
-          ctx.lineWidth = 0.5;
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-        }
-      }
-    }
-  }
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-      p.update();
-      p.draw();
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
     });
-    connectParticles();
-    animationId = requestAnimationFrame(animate);
+
+    // Clear mouse when it leaves the window
+    window.addEventListener('mouseout', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.radius = Math.random() * 1.8 + 0.4;
+        this.opacity = Math.random() * 0.4 + 0.1;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Mouse interaction — gentle attraction
+        if (mouse.x !== null) {
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 160) {
+            const force = (160 - dist) / 160 * 0.012;
+            this.vx += dx * force;
+            this.vy += dy * force;
+          }
+        }
+
+        // Damping
+        this.vx *= 0.99;
+        this.vy *= 0.99;
+
+        // Boundaries — wrap around
+        if (this.x < 0) this.x = canvas.width;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.y < 0) this.y = canvas.height;
+        if (this.y > canvas.height) this.y = 0;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function drawConnections() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < CONNECTION_DIST) {
+            const opacity = (1 - dist / CONNECTION_DIST) * 0.08;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(212, 175, 55, ${opacity})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p) => {
+        p.update();
+        p.draw();
+      });
+      drawConnections();
+      requestAnimationFrame(animateParticles);
+    }
+
+    initParticles();
+    animateParticles();
   }
 
-  animate();
-}
-
-/* ─────────── NAVBAR ─────────── */
-function initNavbar() {
+  // ──────────── Navbar Scroll Effect ────────────
   const navbar = document.querySelector('.navbar');
-  if (!navbar) return;
-
-  let lastScroll = 0;
 
   window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-    if (currentScroll > 60) {
+    if (window.pageYOffset > 50) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
-    lastScroll = currentScroll;
-  }, { passive: true });
-}
+  });
 
-/* ─────────── MOBILE MENU ─────────── */
-function initMobileMenu() {
+  // ──────────── Hamburger Menu ────────────
   const hamburger = document.querySelector('.nav-hamburger');
   const navLinks = document.querySelector('.nav-links');
-  if (!hamburger || !navLinks) return;
 
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    navLinks.classList.toggle('open');
-    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
-  });
-
-  // Close menu when clicking a link
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
-      document.body.style.overflow = '';
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
     });
-  });
-}
 
-/* ─────────── TYPING ANIMATION ─────────── */
-function initTypingAnimation() {
-  const el = document.getElementById('typing-text');
-  if (!el) return;
-
-  const text = el.getAttribute('data-text') || el.textContent;
-  el.textContent = '';
-  el.style.visibility = 'visible';
-
-  let i = 0;
-  const speed = 50;
-
-  function type() {
-    if (i < text.length) {
-      el.textContent += text.charAt(i);
-      i++;
-      setTimeout(type, speed);
-    } else {
-      // Add cursor
-      const cursor = document.createElement('span');
-      cursor.className = 'typing-cursor';
-      cursor.innerHTML = '&nbsp;';
-      el.appendChild(cursor);
-    }
+    // Close menu on link click
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
   }
 
-  // Start typing after loader
-  setTimeout(type, 1200);
-}
+  // ──────────── Typing Animation ────────────
+  const typingEl = document.querySelector('.typing-text');
+  if (typingEl) {
+    const text = typingEl.getAttribute('data-text');
+    let charIndex = 0;
+    typingEl.textContent = '';
 
-/* ─────────── SCROLL REVEAL ─────────── */
-function initScrollReveal() {
-  const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children');
-
-  if (!revealElements.length) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        // Optionally unobserve after reveal
-        // observer.unobserve(entry.target);
+    function type() {
+      if (charIndex < text.length) {
+        typingEl.textContent += text.charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 60);
       }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -60px 0px'
-  });
-
-  revealElements.forEach(el => observer.observe(el));
-}
-
-/* ─────────── COUNTER ANIMATION ─────────── */
-function initCounters() {
-  const counters = document.querySelectorAll('[data-count]');
-  if (!counters.length) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-        entry.target.classList.add('counted');
-        animateCounter(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  counters.forEach(c => observer.observe(c));
-}
-
-function animateCounter(el) {
-  const target = parseInt(el.getAttribute('data-count'));
-  const suffix = el.getAttribute('data-suffix') || '';
-  const prefix = el.getAttribute('data-prefix') || '';
-  const duration = 2000;
-  const startTime = performance.now();
-
-  function update(currentTime) {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-
-    // Ease out quad
-    const eased = 1 - (1 - progress) * (1 - progress);
-    const current = Math.floor(eased * target);
-
-    el.textContent = prefix + current + suffix;
-
-    if (progress < 1) {
-      requestAnimationFrame(update);
-    } else {
-      el.textContent = prefix + target + suffix;
     }
+
+    // Start typing after loader
+    setTimeout(type, 1100);
   }
 
-  requestAnimationFrame(update);
-}
+  // ──────────── Scroll Reveal (Intersection Observer) ────────────
+  const revealElements = document.querySelectorAll(
+    '.reveal, .reveal-left, .reveal-right, .reveal-scale'
+  );
 
-/* ─────────── BUTTON RIPPLE ─────────── */
-function initRipple() {
-  document.querySelectorAll('.btn').forEach(btn => {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.getAttribute('data-delay');
+          if (delay) {
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, parseInt(delay));
+          } else {
+            entry.target.classList.add('visible');
+          }
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  revealElements.forEach((el) => revealObserver.observe(el));
+
+  // ──────────── Animated Counter ────────────
+  const counters = document.querySelectorAll('.stat-number');
+
+  const counterObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = el.getAttribute('data-target');
+          const suffix = el.getAttribute('data-suffix') || '';
+          const prefix = el.getAttribute('data-prefix') || '';
+          const isFloat = target.includes('.');
+          const targetVal = parseFloat(target);
+          const duration = 2200;
+          const startTime = performance.now();
+
+          function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = eased * targetVal;
+
+            if (isFloat) {
+              el.textContent = prefix + current.toFixed(1) + suffix;
+            } else {
+              el.textContent = prefix + Math.floor(current) + suffix;
+            }
+
+            if (progress < 1) {
+              requestAnimationFrame(updateCounter);
+            } else {
+              el.textContent = prefix + target + suffix;
+            }
+          }
+
+          requestAnimationFrame(updateCounter);
+          counterObserver.unobserve(el);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counters.forEach((el) => counterObserver.observe(el));
+
+  // ──────────── Button Ripple Effect ────────────
+  document.querySelectorAll('.btn').forEach((btn) => {
     btn.addEventListener('click', function (e) {
       const ripple = document.createElement('span');
-      ripple.className = 'ripple';
+      ripple.classList.add('ripple');
       const rect = this.getBoundingClientRect();
       const size = Math.max(rect.width, rect.height);
       ripple.style.width = ripple.style.height = size + 'px';
-      ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
-      ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      ripple.style.left = e.clientX - rect.left - size / 2 + 'px';
+      ripple.style.top = e.clientY - rect.top - size / 2 + 'px';
       this.appendChild(ripple);
       setTimeout(() => ripple.remove(), 600);
     });
   });
-}
 
-/* ─────────── CONTACT FORM ─────────── */
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  if (!form) return;
+  // ──────────── Page Transitions ────────────
+  const transition = document.querySelector('.page-transition');
+  const internalLinks = document.querySelectorAll('a[data-transition]');
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
+  internalLinks.forEach((link) => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      if (transition) {
+        transition.classList.add('active');
+        setTimeout(() => {
+          window.location.href = href;
+        }, 350);
+      } else {
+        window.location.href = href;
+      }
+    });
+  });
 
-    let isValid = true;
+  // ──────────── Contact Form Validation ────────────
+  const contactForm = document.getElementById('contact-form');
+  const successMessage = document.querySelector('.success-message');
 
-    // Validate name
-    const name = form.querySelector('#name');
-    const nameError = form.querySelector('#name-error');
-    if (name && nameError) {
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      let isValid = true;
+
+      // Name validation
+      const name = document.getElementById('form-name');
+      const nameError = name.parentElement.querySelector('.error-msg');
       if (name.value.trim().length < 2) {
         name.classList.add('error');
-        nameError.classList.add('show');
-        nameError.textContent = 'Please enter your full name.';
+        nameError.style.display = 'block';
         isValid = false;
       } else {
         name.classList.remove('error');
-        nameError.classList.remove('show');
+        nameError.style.display = 'none';
       }
-    }
 
-    // Validate email
-    const email = form.querySelector('#email');
-    const emailError = form.querySelector('#email-error');
-    if (email && emailError) {
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email.value.trim())) {
+      // Email validation
+      const email = document.getElementById('form-email');
+      const emailError = email.parentElement.querySelector('.error-msg');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value.trim())) {
         email.classList.add('error');
-        emailError.classList.add('show');
-        emailError.textContent = 'Please enter a valid email address.';
+        emailError.style.display = 'block';
         isValid = false;
       } else {
         email.classList.remove('error');
-        emailError.classList.remove('show');
+        emailError.style.display = 'none';
       }
-    }
 
-    // Validate message
-    const message = form.querySelector('#message');
-    const messageError = form.querySelector('#message-error');
-    if (message && messageError) {
+      // Message validation
+      const message = document.getElementById('form-message');
+      const messageError = message.parentElement.querySelector('.error-msg');
       if (message.value.trim().length < 10) {
         message.classList.add('error');
-        messageError.classList.add('show');
-        messageError.textContent = 'Message must be at least 10 characters.';
+        messageError.style.display = 'block';
         isValid = false;
       } else {
         message.classList.remove('error');
-        messageError.classList.remove('show');
+        messageError.style.display = 'none';
       }
-    }
 
-    if (isValid) {
-      // Hide form, show success
-      form.style.display = 'none';
-      const success = document.getElementById('form-success');
-      if (success) {
-        success.classList.add('show');
-      }
-    }
-  });
-
-  // Real-time validation clearing
-  form.querySelectorAll('input, textarea').forEach(field => {
-    field.addEventListener('input', () => {
-      field.classList.remove('error');
-      const errorEl = form.querySelector(`#${field.id}-error`);
-      if (errorEl) errorEl.classList.remove('show');
-    });
-  });
-}
-
-/* ─────────── SMOOTH SCROLL ─────────── */
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (isValid) {
+        contactForm.style.display = 'none';
+        successMessage.classList.add('show');
       }
     });
+
+    // Real-time validation clearing
+    ['form-name', 'form-email', 'form-message'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', () => {
+          el.classList.remove('error');
+          const err = el.parentElement.querySelector('.error-msg');
+          if (err) err.style.display = 'none';
+        });
+      }
+    });
+  }
+
+  // ──────────── Active Nav Link ────────────
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a').forEach((link) => {
+    const href = link.getAttribute('href');
+    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+      link.classList.add('active');
+    }
   });
-}
+
+  // ──────────── ADI Card Hover Glow ────────────
+  document.querySelectorAll('.adi-card').forEach((card) => {
+    card.addEventListener('mousemove', function (e) {
+      const rect = this.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      this.style.setProperty('--mouse-x', `${x}px`);
+      this.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+
+});
