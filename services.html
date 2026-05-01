@@ -2,348 +2,248 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Aerial Insights Services — AI Decision Intelligence Framework. Explore our Signal-Pattern-Insight methodology and investment tiers.">
-    <title>Services | Aerial Insights — AI Decision Intelligence Framework</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>△</text></svg>">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Three Core Services | Aerial Insights</title>
+  <meta name="description"
+    content="Explore Aerial Insights' three core services: ADI Workshops, AI Decision Audits, and Executive Coaching. Transform how you use AI for decision-making." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-    <!-- Page Loader -->
-    <div class="page-loader" id="page-loader">
-        <div class="loader-logo">Aerial Insights</div>
-        <div class="loader-bar"></div>
+  <!-- Page Loader -->
+  <div class="page-loader" id="page-loader">
+    <div class="loader-ring"></div>
+    <span class="loader-text">Aerial Insights</span>
+  </div>
+
+  <!-- Page Transition Overlay -->
+  <div class="page-transition"></div>
+
+  <!-- Particle Background -->
+  <canvas id="particle-canvas"></canvas>
+  <div class="grid-bg"></div>
+
+  <!-- ═══════════ NAVBAR ═══════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo" data-transition>
+        <span class="logo-icon">AI</span>
+        Aerial Insights
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-transition>Home</a></li>
+        <li><a href="services.html" data-transition>Services</a></li>
+        <li><a href="contact.html" data-transition>Contact</a></li>
+      </ul>
+      <div class="nav-hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
     </div>
+  </nav>
 
-    <!-- Background Grid -->
-    <div class="bg-grid"></div>
-
-    <!-- Particle Canvas -->
-    <canvas id="particles-canvas"></canvas>
-
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <div class="logo-icon">△</div>
-                <span>Aerial Insights</span>
-            </a>
-            <div class="nav-links" id="nav-links">
-                <a href="index.html">Home</a>
-                <a href="services.html" class="active">Services</a>
-                <a href="contact.html">Contact</a>
-                <a href="contact.html" class="nav-cta">Get Started</a>
-            </div>
-            <div class="nav-hamburger" id="nav-hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero" id="services-hero" style="min-height: 60vh;">
+    <div class="container">
+      <div class="hero-content" style="max-width: 720px;">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Our Services
         </div>
-    </nav>
+        <h1 style="animation: fadeInUp 0.8s var(--ease) 0.3s both;">
+          Three Core <span class="gradient-text">Services</span>
+        </h1>
+        <p class="hero-sub" style="animation: fadeInUp 0.8s var(--ease) 0.5s both;">
+          We help students, professionals, and organizations verify AI outputs before they become bad decisions —
+          through workshops, audits, and coaching.
+        </p>
+      </div>
+      <div class="hero-orb"></div>
+    </div>
+  </section>
 
-    <!-- ═══════════ PAGE HERO ═══════════ -->
-    <section class="page-hero" id="services-hero">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="dot"></span>
-                Our Services
-            </div>
-            <h1>AI Decision Intelligence Framework</h1>
-            <p>A structured methodology for transforming raw AI outputs into actionable strategic intelligence that
-                drives superior business outcomes.</p>
+  <!-- ═══════════ ADI PIPELINE VISUAL ═══════════ -->
+  <section class="section-pad" id="pipeline" style="padding-top: 50px;">
+    <div class="container">
+      <div class="adi-pipeline reveal">
+        <div class="adi-step">
+          <span class="step-num">1</span>
+          Signal
         </div>
-    </section>
-
-    <!-- ═══════════ ADI FRAMEWORK OVERVIEW ═══════════ -->
-    <section class="section framework-section" id="adi-overview">
-        <div class="container">
-            <div style="text-align:center;" class="reveal">
-                <div class="section-label" style="justify-content:center;">The ADI Framework</div>
-                <h2 class="section-title">Signal · Pattern · <span class="gold">Insight</span></h2>
-                <p class="section-subtitle" style="margin:0 auto;">Our proprietary three-pillar methodology — the
-                    backbone of every engagement.</p>
-            </div>
-            <div class="framework-grid stagger-children reveal">
-                <div class="framework-card glass-card">
-                    <div class="framework-icon">📡</div>
-                    <h3>Signal</h3>
-                    <p>Hunting for the human context and subtle qualitative data that machines miss. We look beyond the
-                        dashboard to the boardroom dynamics, market sentiment, and cultural nuances that shape
-                        decisions.</p>
-                </div>
-                <div class="framework-card glass-card">
-                    <div class="framework-icon">🔗</div>
-                    <h3>Pattern</h3>
-                    <p>Connecting current data to historical trends and first principles. We identify recurring themes,
-                        anomalies, and correlations that surface strategic opportunities others overlook.</p>
-                </div>
-                <div class="framework-card glass-card">
-                    <div class="framework-icon">💡</div>
-                    <h3>Insight</h3>
-                    <p>Synthesizing the superior, judgment-led strategy for action. We distill complex patterns into
-                        clear, conviction-backed recommendations for decisive leadership.</p>
-                </div>
-            </div>
+        <span class="adi-arrow">→</span>
+        <div class="adi-step">
+          <span class="step-num">2</span>
+          Pattern
         </div>
-    </section>
-
-    <!-- ═══════════ FRAMEWORK PHASES (4-STEP DELIVERY) ═══════════ -->
-    <section class="section phases-section" id="phases">
-        <div class="container">
-            <div style="text-align:center;" class="reveal">
-                <div class="section-label" style="justify-content:center;">Delivery Process</div>
-                <h2 class="section-title">The 4-Phase <span class="gold">Engagement Model</span></h2>
-                <p class="section-subtitle" style="margin:0 auto;">Our structured delivery process ensures lasting
-                    transformation — not just a training event.</p>
-            </div>
-
-            <div style="margin-top:48px;">
-                <!-- Phase 1 -->
-                <div class="phase-card glass-card reveal">
-                    <div class="phase-number">01</div>
-                    <div class="phase-content">
-                        <h3>Diagnostic Assessment</h3>
-                        <p>We begin by conducting a comprehensive audit of your organization's current AI and data
-                            workflows, identifying specific "Judgment Gaps" where human oversight is most critical and
-                            most lacking.</p>
-                        <ul>
-                            <li>AI workflow mapping & gap analysis</li>
-                            <li>Decision-maker interviews & behavioral assessment</li>
-                            <li>Data quality & utilization audit</li>
-                            <li>Customized roadmap & priority matrix</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Phase 2 -->
-                <div class="phase-card glass-card reveal">
-                    <div class="phase-number">02</div>
-                    <div class="phase-content">
-                        <h3>Foundational Training</h3>
-                        <p>Intensive, hands-on workshops on the Signal-Pattern-Insight framework designed for key
-                            decision-makers. We build the cognitive muscle for AI-augmented thinking from the ground up.
-                        </p>
-                        <ul>
-                            <li>Signal Detection: Reading between the data lines</li>
-                            <li>Pattern Recognition: Historical analysis meets first principles</li>
-                            <li>Insight Synthesis: Converting patterns into decisive action</li>
-                            <li>Case studies from high-stakes business environments</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Phase 3 -->
-                <div class="phase-card glass-card reveal">
-                    <div class="phase-number">03</div>
-                    <div class="phase-content">
-                        <h3>Live Project Deep Dive</h3>
-                        <p>The theory meets reality. Your team applies the ADI Framework to a real-world, high-stakes
-                            project under expert guidance, generating measurable impact from day one.</p>
-                        <ul>
-                            <li>Selection of a live strategic challenge</li>
-                            <li>Guided framework application with real data</li>
-                            <li>Weekly coaching sessions with ADI experts</li>
-                            <li>Deliverable: A judgment-led strategic recommendation</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Phase 4 -->
-                <div class="phase-card glass-card reveal">
-                    <div class="phase-number">04</div>
-                    <div class="phase-content">
-                        <h3>Integration & Governance</h3>
-                        <p>We embed the ADI methodology into your organization's standard operating procedures and
-                            governance models, ensuring the transformation outlasts the engagement.</p>
-                        <ul>
-                            <li>ADI playbook customized for your organization</li>
-                            <li>Decision governance framework implementation</li>
-                            <li>Internal champion certification program</li>
-                            <li>Quarterly review & continuous improvement system</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <span class="adi-arrow">→</span>
+        <div class="adi-step">
+          <span class="step-num">3</span>
+          Insight
         </div>
-    </section>
-
-    <!-- ═══════════ PRICING SECTION ═══════════ -->
-    <section class="section" id="pricing">
-        <div class="container">
-            <div style="text-align:center;" class="reveal">
-                <div class="section-label" style="justify-content:center;">Investment</div>
-                <h2 class="section-title">Choose Your <span class="gold">Engagement Tier</span></h2>
-                <p class="section-subtitle" style="margin:0 auto;">Flexible investment options designed to meet you
-                    where you are in your AI decision intelligence journey.</p>
-            </div>
-
-            <div class="pricing-grid stagger-children reveal">
-                <!-- Tier 1 -->
-                <div class="pricing-card glass-card">
-                    <div class="pricing-tier">Foundation</div>
-                    <div class="pricing-price"><span class="currency">$</span>2,500</div>
-                    <div class="pricing-period">Per Workshop Engagement</div>
-                    <ul class="pricing-features">
-                        <li>Half-day ADI Framework Workshop</li>
-                        <li>Up to 20 participants</li>
-                        <li>Signal-Pattern-Insight overview</li>
-                        <li>Interactive case study exercise</li>
-                        <li>Digital workbook & resources</li>
-                        <li>Certificate of completion</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-secondary" style="width:100%;justify-content:center;">Get
-                        Started</a>
-                </div>
-
-                <!-- Tier 2 (Featured) -->
-                <div class="pricing-card glass-card featured">
-                    <div class="pricing-tier">Professional</div>
-                    <div class="pricing-price"><span class="currency">$</span>8,500</div>
-                    <div class="pricing-period">Full Engagement (4 Phases)</div>
-                    <ul class="pricing-features">
-                        <li>Complete 4-phase delivery model</li>
-                        <li>Diagnostic assessment included</li>
-                        <li>3-day intensive training program</li>
-                        <li>Live project deep dive (4 weeks)</li>
-                        <li>ADI playbook for your organization</li>
-                        <li>90-day post-engagement support</li>
-                        <li>Priority email & call access</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;">Schedule
-                        Consultation →</a>
-                </div>
-
-                <!-- Tier 3 -->
-                <div class="pricing-card glass-card">
-                    <div class="pricing-tier">Enterprise</div>
-                    <div class="pricing-price"><span class="currency">$</span>25,000</div>
-                    <div class="pricing-period">Annual Partnership</div>
-                    <ul class="pricing-features">
-                        <li>Everything in Professional</li>
-                        <li>Unlimited team training sessions</li>
-                        <li>Internal champion certification</li>
-                        <li>Decision governance framework</li>
-                        <li>Quarterly strategic reviews</li>
-                        <li>Dedicated ADI advisor on retainer</li>
-                        <li>Custom AI decision dashboards</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-blue" style="width:100%;justify-content:center;">Contact for
-                        Enterprise</a>
-                </div>
-            </div>
-
-            <!-- Academic Pricing -->
-            <div class="workshop-banner reveal" style="margin-top:64px;">
-                <div class="section-label" style="justify-content:center;">Academic Program</div>
-                <h3>University Workshops: <span
-                        style="background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">The
-                        Future is Human</span></h3>
-                <p>Specialized ADI workshops for university students to bridge the classroom-to-career gap. Equipping
-                    the next generation of leaders with judgment skills AI cannot replace.</p>
-                <div
-                    style="margin-top:20px;font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:800;color:var(--gold);">
-                    $500 <span style="font-size:0.9rem;font-weight:400;color:var(--text-muted);">per workshop (up to 40
-                        students)</span></div>
-                <a href="contact.html" class="btn btn-primary" style="margin-top:20px;">Book Academic Workshop →</a>
-            </div>
+        <span class="adi-arrow">→</span>
+        <div class="adi-step">
+          <span class="step-num">4</span>
+          Decision
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- ═══════════ VALUE CHAIN ═══════════ -->
-    <section class="section value-chain-section" id="value-chain">
-        <div class="container">
-            <div style="text-align:center;" class="reveal">
-                <div class="section-label" style="justify-content:center;">The Value Chain</div>
-                <h2 class="section-title">Our Unique <span class="gold">Delivery Process</span> & Differentiation</h2>
-            </div>
-            <div class="vc-timeline stagger-children reveal">
-                <div class="vc-step">
-                    <div class="vc-step-number">01</div>
-                    <h4>Diagnostic</h4>
-                    <p>Identifying specific "Judgment Gaps" within the organization's current AI and data workflows.</p>
-                </div>
-                <div class="vc-step">
-                    <div class="vc-step-number">02</div>
-                    <h4>Foundational Training</h4>
-                    <p>Intensive workshops on the Signal-Pattern-Insight framework for key decision-makers.</p>
-                </div>
-                <div class="vc-step">
-                    <div class="vc-step-number">03</div>
-                    <h4>Live Project Deep Dive</h4>
-                    <p>Applying the framework to a real-world, high-stakes project under expert guidance.</p>
-                </div>
-                <div class="vc-step">
-                    <div class="vc-step-number">04</div>
-                    <h4>Integration</h4>
-                    <p>Embedding the ADI methodology into standard operating procedures and governance.</p>
-                </div>
-            </div>
-            <div class="value-chain-quote reveal">
-                We don't build the car; we train the driver.
-            </div>
+  <!-- ═══════════ THREE CORE SERVICES ═══════════ -->
+  <section class="section-pad" id="services" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title">Three Core Services</h2>
+        <p class="section-desc">Each service is built on the ADI Framework — Signal, Pattern, Insight, Decision — to
+          ensure you stay in charge of AI, not the other way around.</p>
+      </div>
+
+      <div class="services-trio">
+
+        <!-- ═══ Service 1: ADI Workshops ═══ -->
+        <div class="service-card glass-card reveal" data-delay="0">
+          <div class="service-icon">🎓</div>
+          <p class="service-tag">Service 01</p>
+          <h3>ADI Workshops</h3>
+          <p class="service-desc">2–3 hour group sessions teaching the ADI Framework — a clear, structured practice for
+            using AI as a thinking partner, not a crutch.</p>
+
+          <p class="service-who">Who It's For</p>
+          <p class="service-audience">Students, teams, entrepreneurship cells, university departments</p>
+
+          <p class="service-learn-title">What They Learn</p>
+          <ul class="service-list">
+            <li><strong>Signal:</strong> Notice what's off. What's missing.</li>
+            <li><strong>Pattern:</strong> Let AI find connections you can't see.</li>
+            <li><strong>Insight:</strong> Own the meaning.</li>
+            <li><strong>Decision:</strong> Own the choice.</li>
+          </ul>
+
+          <div class="service-outcome">
+            <strong>Outcome</strong>
+            <p>Participants leave with a clear practice for using AI as a thinking partner, not a crutch.</p>
+          </div>
+
+          <p class="service-price"><span>Contact for pricing</span> · Group rates available</p>
         </div>
-    </section>
 
-    <!-- ═══════════ CTA SECTION ═══════════ -->
-    <section class="cta-section section" id="cta">
-        <div class="container reveal">
-            <h2 class="section-title">Ready to <span class="gold">Transform</span> Your Decisions?</h2>
-            <p>Schedule a strategic consultation and take the first step toward building AI Decision Intelligence within
-                your organization.</p>
-            <a href="contact.html" class="btn btn-primary">Schedule Strategic Consultation →</a>
+        <!-- ═══ Service 2: AI Decision Audits ═══ -->
+        <div class="service-card glass-card reveal" data-delay="150">
+          <div class="service-icon">🔍</div>
+          <p class="service-tag">Service 02</p>
+          <h3>AI Decision Audits</h3>
+          <p class="service-desc">1–2 week assessment of how an organization is using AI for decisions — uncovering
+            blind trust, hallucinations, bias, and errors.</p>
+
+          <p class="service-who">Who It's For</p>
+          <p class="service-audience">Companies, startups, university departments</p>
+
+          <p class="service-learn-title">What We Do</p>
+          <ul class="service-list">
+            <li>Map current AI use across the organization</li>
+            <li>Identify where AI is trusted blindly</li>
+            <li>Find hallucinations, bias, and errors</li>
+            <li>Recommend verification framework</li>
+          </ul>
+
+          <div class="service-outcome">
+            <strong>Outcome</strong>
+            <p>A clear report of risks and a practical plan to address them.</p>
+          </div>
+
+          <p class="service-price"><span>Contact for pricing</span></p>
         </div>
-    </section>
 
-    <!-- ═══════════ FOOTER ═══════════ -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="index.html" class="nav-logo">
-                        <div class="logo-icon">△</div>
-                        <span>Aerial Insights</span>
-                    </a>
-                    <p>Bridging the gap between automated data and human wisdom. Building the human capacity to think
-                        clearly in a world where AI is thinking for everyone.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Navigation</h4>
-                    <a href="index.html">Home</a>
-                    <a href="services.html">Services</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Framework</h4>
-                    <a href="#adi-overview">Signal</a>
-                    <a href="#adi-overview">Pattern</a>
-                    <a href="#adi-overview">Insight</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <a href="mailto:keiththandobhebhe@gmail.com">Email Us</a>
-                    <a href="tel:+263789661344">+263 789661344</a>
-                    <a href="#">Mon – Sat, 10AM – 5PM</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Aerial Insights. All rights reserved.</p>
-                <div class="footer-socials">
-                    <a href="https://www.linkedin.com/in/keith-bhebhe-b40650311" target="_blank"
-                        aria-label="LinkedIn">in</a>
-                    <a href="mailto:keiththandobhebhe@gmail.com" aria-label="Email">✉</a>
-                    <a href="#" aria-label="Twitter">𝕏</a>
-                </div>
-            </div>
+        <!-- ═══ Service 3: Executive Coaching ═══ -->
+        <div class="service-card glass-card reveal" data-delay="300">
+          <div class="service-icon">👤</div>
+          <p class="service-tag">Service 03</p>
+          <h3>Executive Coaching</h3>
+          <p class="service-desc">1-on-1 sessions applying the ADI Framework to your real decisions — building a daily
+            practice for clarity and conviction.</p>
+
+          <p class="service-who">Who It's For</p>
+          <p class="service-audience">Leaders, founders, managers, professionals</p>
+
+          <p class="service-learn-title">What We Do</p>
+          <ul class="service-list">
+            <li>Apply ADI to your current decisions</li>
+            <li>Find patterns in your judgment</li>
+            <li>Build a daily practice for clarity</li>
+          </ul>
+
+          <div class="service-outcome">
+            <strong>Outcome</strong>
+            <p>You leave with a decision, a commitment, and a practice.</p>
+          </div>
+
+          <p class="service-price"><span>Contact for pricing</span></p>
         </div>
-    </footer>
 
-    <script src="script.js"></script>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CTA SECTION ═══════════ -->
+  <section class="section-pad" id="cta">
+    <div class="container">
+      <div class="glass-card cta-card reveal">
+        <span class="section-label">Ready to Transform?</span>
+        <h2 class="section-title" style="margin-top: 14px;">Let's Build Your Decision Intelligence</h2>
+        <p class="section-desc" style="margin-bottom: 36px;">Take the first step toward AI-powered strategic
+          clarity. We help you verify AI outputs before they become bad decisions.</p>
+        <a href="contact.html" class="btn btn-primary" data-transition>
+          Schedule Consultation
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" data-transition>
+            <span class="logo-icon">AI</span>
+            Aerial Insights
+          </a>
+          <p>Bridging the gap between automated data and human wisdom. Building the human capacity to think clearly in a
+            world where AI is thinking for everyone.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" data-transition>Home</a></li>
+            <li><a href="services.html" data-transition>Services</a></li>
+            <li><a href="contact.html" data-transition>Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:keiththandobhebhe@gmail.com">keiththandobhebhe@gmail.com</a></li>
+            <li>📞 9813024053</li>
+            <li>Mon – Sat · 10 AM – 5 PM</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Aerial Insights. All rights reserved.</span>
+        <span>Signal · Pattern · Insight · Decision</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <!-- Chatbase Chatbot -->
+  <script>
+  (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="owo9qbTR2sFKIhl7Ma_fW";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+  </script>
 </body>
 
 </html>
